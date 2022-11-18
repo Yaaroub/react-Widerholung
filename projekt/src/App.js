@@ -1,5 +1,8 @@
 import Test from "./components/Test";
 import Test2 from "./components/Test2";
+import UseE from "./components/UseE";
+import UseReducer from "./components/UseReducer";
+import { useState } from "react";
 const favoriteFood = [
   {
     name: "Spaghetti Bolognese",
@@ -20,12 +23,22 @@ const favoriteFood = [
 ];
 
 function App() {
+  const [zahl, setZahl] = useState(0);
+
+  const clickHandlerZ = () => {
+    setZahl(zahl + 1);
+  };
   return (
     <div className="App">
       {favoriteFood.map((el, i) => {
         return <Test key={i} food={el} />;
       })}
       <Test2 />
+      <button onClick={clickHandlerZ}>counter</button>
+      <h1>{zahl}</h1>
+      <button onClick={() => setZahl(zahl-1)}>reset</button>
+      <UseE/>
+      <UseReducer/>
     </div>
   );
 }
